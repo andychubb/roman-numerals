@@ -4,14 +4,23 @@ namespace Tests\Unit;
 
 use App\Utilities\RomanNumerals;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class RomanNumeralsTest extends TestCase
 {
-    /**
-     * Test that 1 is converted into I.
-     */
-    public function test_integer_1_is_converted_to_I(): void
+    public static function numbersProvider(): array
     {
-        $this->assertEquals('I', RomanNumerals::convert(1));
+        return [
+            [1, 'I']
+        ];
     }
+    /**
+     * Test that supplied integer is converted into correct roman numeral.
+     */
+    #[DataProvider('numbersProvider')]
+    public function test_integer_is_converted_to_roman_numeral($number, $romanNumeral): void
+    {
+        $this->assertEquals($romanNumeral, RomanNumerals::convert($number));
+    }
+
 }
