@@ -16,7 +16,7 @@ class RomanNumerals
         'I' => 1,
     ];
 
-    public static function convert(int $number): string
+    public static function toNumerals(int $number): string
     {
         $result = '';
 
@@ -26,6 +26,22 @@ class RomanNumerals
                 $result .= $numeral;
                 // Then subtract the numeral number for the next run of the loop
                 $number -= $numeralNumber;
+            }
+        }
+
+        return $result;
+    }
+
+    public static function toNumber(string $roman): int
+    {
+        $result = 0;
+
+        foreach(static::NUMERALS as $numeral => $numeralNumber) {
+            while (strpos($roman, $numeral) === 0) {
+                // While looping through the NUMERALS array, if we match a numeralNumber increment the result
+                $result += $numeralNumber;
+                // Remove the matched numeral from the string for the next run of the loop
+                $roman = substr($roman, strlen($numeral));
             }
         }
 

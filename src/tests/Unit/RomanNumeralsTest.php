@@ -26,19 +26,26 @@ class RomanNumeralsTest extends TestCase
             [50, 'L'],
             [75, 'LXXV'],
             [90, 'XC'],
-            [100, 'C'],
-
-
-
+            [100, 'C']
         ];
     }
+
     /**
      * Test that supplied integer is converted into correct roman numeral.
      */
     #[DataProvider('numbersProvider')]
     public function test_integer_is_converted_to_roman_numeral($number, $romanNumeral): void
     {
-        $this->assertEquals($romanNumeral, RomanNumerals::convert($number));
+        $this->assertEquals($romanNumeral, RomanNumerals::toNumerals($number));
+    }
+
+    /**
+     * Test that supplied roman numeral is converted into correct mumber.
+     */
+    #[DataProvider('numbersProvider')]
+    public function test_roman_numeral_is_converted_to_number($number, $romanNumeral): void
+    {
+        $this->assertEquals($number, RomanNumerals::toNumber($romanNumeral));
     }
 
 }
