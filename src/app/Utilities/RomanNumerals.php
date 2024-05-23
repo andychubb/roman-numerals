@@ -35,9 +35,15 @@ class RomanNumerals
      * @param int $number The number to be converted.
      *
      * @return string The value of $number expressed in roman numerals.
+     * @throws \InvalidArgumentException If the number is less than 1 or greater than 100,000.
      */
     public static function toNumerals(int $number): string
     {
+        // Validates the input number
+        if ($number < 1 || $number > 100000) {
+            throw new \InvalidArgumentException('Number must be between 1 and 100,000.');
+        }
+
         $result = '';
 
         foreach(static::NUMERALS as $numeral => $numeralNumber) {
@@ -58,6 +64,7 @@ class RomanNumerals
      * @param string $roman The string to be converted.
      *
      * @return int The number that the string of roman numerals equates to.
+     * @throws \InvalidArgumentException If the string contains any non roman numeral characters.
      */
     public static function toNumber(string $roman): int
     {
@@ -74,7 +81,7 @@ class RomanNumerals
 
         if (!empty($roman)) {
             // If there are any characters remaining then the roman numeral string must be invalid
-            throw new \Exception('Invalid Roman Numeral');
+            throw new \InvalidArgumentException('Invalid Roman Numeral');
         }
 
         return $result;

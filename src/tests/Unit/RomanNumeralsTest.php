@@ -73,14 +73,31 @@ class RomanNumeralsTest extends TestCase
     }
 
     /**
+     * Test to throw an exception if a number below 1 passed in to toNumerals.
+     */
+    public function test_cannot_convert_number_below_one(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        RomanNumerals::toNumerals(-1);
+    }
+
+    /**
+     * Test to throw an exception if a number above 100,000 passed in to toNumerals.
+     */
+    public function test_cannot_convert_number_above_one_hundred_thousand(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        RomanNumerals::toNumerals(100001);
+    }
+
+    /**
      * Test to throw an exception if an invalid string is passed in to toNumber.
      */
-    public function test_cannot_convert_an_invalid_roman_numeral_string() : void
+    public function test_cannot_convert_an_invalid_roman_numeral_string(): void
     {
-        $romanNumerals = new RomanNumerals();
-
-        $this->expectException(\Exception::class);
-        $romanNumerals::toNumber('XXZ');
+    
+        $this->expectException(\InvalidArgumentException::class);
+        RomanNumerals::toNumber('XXZ');
 
     }
 
