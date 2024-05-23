@@ -8,6 +8,9 @@ use PHPUnit\Framework\Attributes\DataProvider;
 
 class RomanNumeralsTest extends TestCase
 {
+    // Using the following as a guide on roman numerals up to 100000
+    // https://mammothmemory.net/maths/numbers/roman-numerals/roman-numerals-from-1000-to-1-million.html
+    
     public static function numbersProvider(): array
     {
         return [
@@ -26,7 +29,28 @@ class RomanNumeralsTest extends TestCase
             [50, 'L'],
             [75, 'LXXV'],
             [90, 'XC'],
-            [100, 'C']
+            [100, 'C'],
+            [250, 'CCL'],
+            [400, 'CD'],
+            [500, 'D'],
+            [750, 'DCCL'],
+            [900, 'CM'],
+            [1000, 'M'],
+            [2000, 'MM'],
+            [3000, 'MMM'],
+            [4000, 'MV̅'],
+            [5000, 'V̅'],
+            [6000, 'V̅M'],
+            [7000, 'V̅MM'],
+            [8000, 'V̅MMM'],
+            [9000, 'MX̅'],
+            [10000, 'X̅'],
+            [25000, 'X̅X̅V̅'],
+            [40000, 'X̅L̅'],
+            [50000, 'L̅'],
+            [75000, 'L̅X̅X̅V̅'],
+            [90000, 'X̅C̅'],
+            [100000, 'C̅'],
         ];
     }
 
