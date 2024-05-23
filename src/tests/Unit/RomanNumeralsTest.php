@@ -11,7 +11,11 @@ class RomanNumeralsTest extends TestCase
     public static function numbersProvider(): array
     {
         return [
-            [1, 'I']
+            [1, 'I'],
+            [2, 'II'],
+            [3, 'III'],
+            [4, 'IV'],
+            [5, 'V']
         ];
     }
     /**
