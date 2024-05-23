@@ -28,6 +28,14 @@ class RomanNumerals
         'I' => 1,
     ];
 
+
+    /**
+     * Convert an integer into roman numerals.
+     *
+     * @param int $number The number to be converted.
+     *
+     * @return string The value of $number expressed in roman numerals.
+     */
     public static function toNumerals(int $number): string
     {
         $result = '';
@@ -44,6 +52,13 @@ class RomanNumerals
         return $result;
     }
 
+    /**
+     * Convert a string of roman numerals into a number.
+     *
+     * @param string $roman The string to be converted.
+     *
+     * @return int The number that the string of roman numerals equates to.
+     */
     public static function toNumber(string $roman): int
     {
         $result = 0;
@@ -55,6 +70,11 @@ class RomanNumerals
                 // Remove the matched numeral from the string for the next run of the loop
                 $roman = substr($roman, strlen($numeral));
             }
+        }
+
+        if (!empty($roman)) {
+            // If there are any characters remaining then the roman numeral string must be invalid
+            throw new \Exception('Invalid Roman Numeral');
         }
 
         return $result;

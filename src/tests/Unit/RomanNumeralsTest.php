@@ -10,7 +10,7 @@ class RomanNumeralsTest extends TestCase
 {
     // Using the following as a guide on roman numerals up to 100000
     // https://mammothmemory.net/maths/numbers/roman-numerals/roman-numerals-from-1000-to-1-million.html
-    
+
     public static function numbersProvider(): array
     {
         return [
@@ -70,6 +70,18 @@ class RomanNumeralsTest extends TestCase
     public function test_roman_numeral_is_converted_to_number($number, $romanNumeral): void
     {
         $this->assertEquals($number, RomanNumerals::toNumber($romanNumeral));
+    }
+
+    /**
+     * Test to throw an exception if an invalid string is passed in to toNumber.
+     */
+    public function test_cannot_convert_an_invalid_roman_numeral_string() : void
+    {
+        $romanNumerals = new RomanNumerals();
+
+        $this->expectException(\Exception::class);
+        $romanNumerals::toNumber('XXZ');
+
     }
 
 }
