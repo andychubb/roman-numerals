@@ -64,3 +64,13 @@ services:
     entrypoint: ["php", "artisan"]
     networks:
       - laravel
+
+  npm:
+    image: node:18.20
+    container_name: npm
+    volumes:
+      - ./src:/var/www/html
+    working_dir: /var/www/html
+    entrypoint: ["npm"]
+    networks:
+      - laravel
