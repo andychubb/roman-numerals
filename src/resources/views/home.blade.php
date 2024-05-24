@@ -6,7 +6,8 @@
 </head>
 <body>
     <h1>Roman Numerals Converter</h1>
-    <form method="POST">
+    <form action="{{ route('convert') }}" method="POST">
+        @csrf
         <label for="value">Enter a number or Roman numeral:</label>
         <input type="text" id="value" name="value" required>
         <button type="submit">Convert</button>
