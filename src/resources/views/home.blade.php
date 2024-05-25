@@ -12,5 +12,11 @@
         <input type="text" id="value" name="value" required>
         <button type="submit">Convert</button>
     </form>
+
+    @if(session('convertedValue'))
+        <p>Converted Value: {{ session('convertedValue') }}</p>
+    @elseif(session('error'))
+        <p>Error: {{ session('error') }}</p>
+    @endif
 </body>
 </html>
