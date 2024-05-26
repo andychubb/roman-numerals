@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RomanNumeralsController;
+use Inertia\Inertia;
 
 Route::get('/', function () {
-    return view('home');
+    return Inertia::render('Home');
 })->name('home');
 
-Route::post('/convert', [RomanNumeralsController::class, 'convert'])->name('convert');
+Route::post('/convert', [RomanNumeralsController::class, 'convert']);

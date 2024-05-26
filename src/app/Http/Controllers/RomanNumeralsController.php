@@ -19,9 +19,9 @@ class RomanNumeralsController extends Controller
             } else {
                 $converted = $romanNumerals->toNumber($input);
             }
-            return redirect()->back()->with('convertedValue', $converted);
+            return response()->json(['convertedValue' => $converted]);
         } catch (\InvalidArgumentException $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            return response()->json(['error' => $e->getMessage()], 400);
         }
     }
 }
